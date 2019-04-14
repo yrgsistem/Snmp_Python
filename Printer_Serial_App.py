@@ -27,11 +27,11 @@ class SnmpProtocol:
         stmt = os.popen(self.snmpcmd + " " + self.username + " " + ip + " " + self.oid).read()
         print(ip + " : " + stmt)
 
-snmpprotocol = SnmpProtocol()
-for i in snmpprotocol.iplist:
-    result = snmpprotocol.execute(i)
+#snmpprotocol = SnmpProtocol()
+#for i in snmpprotocol.iplist:
+#    result = snmpprotocol.execute(i)
 
 insert =  querytrigger()
-insertsql = "INSERT INTO public.users(id, ad, soyad) VALUES (%s)"
-data = ('deneme')
+insertsql = "INSERT INTO public.ipadresleri (serino) VALUES (%s)"
+data = ('11')
 records = insert.insertdeletequery(insertsql, data)
