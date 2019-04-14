@@ -8,6 +8,8 @@ class SnmpProtocol:
         self.username = username
         self.oid = oid
 
+
+
         dbclass = querytrigger()
         sql = "SELECT ip FROM public.ipadresleri"
 
@@ -28,3 +30,8 @@ class SnmpProtocol:
 snmpprotocol = SnmpProtocol()
 for i in snmpprotocol.iplist:
     result = snmpprotocol.execute(i)
+
+insert =  querytrigger()
+insertsql = "INSERT INTO public.users(id, ad, soyad) VALUES (%s)"
+data = ('deneme')
+records = insert.insertdeletequery(insertsql, data)
