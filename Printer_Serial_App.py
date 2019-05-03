@@ -24,29 +24,29 @@ class SnmpProtocol:
 
     def execute(self,ip):
         stmt = os.popen(self.snmpcmd + " " + self.username + " " + ip + " " + self.oid).read()
-        stmt2 = os.popen(self.snmpcmd + " " + self.username + " " + ip + " " + self.oid2).read()
+        #stmt2 = os.popen(self.snmpcmd + " " + self.username + " " + ip + " " + self.oid2).read()
 
         a = stmt.split('.')
         c = a[-1]
         d = c[c.find("\"")+1: len(c) -2]
 
-        a1 = stmt2.split('.')
-        print(a1)
-        c1 = a1[-3]
-        print(c1)
-        d1 = c1[c1.find("\"") + 1: len(c1)]
-        print(ip +" : "+d1)
+        #a1 = stmt2.split('.')
+        #print(a1)
+        #c1 = a1[-3]
+        #print(c1)
+        #d1 = c1[c1.find("\"") + 1: len(c1)]
+        #print(ip +" : "+d)
 
-        #qt = querytrigger()
-        #updatesql = "UPDATE public.ipadresleri SET serino=%s WHERE ip=%s"
-        #data = [d,ip]
-        #qt.insertdeletequery(updatesql, data)
-        #print("updated")
+        qt = querytrigger()
+        updatesql = "UPDATE public.ipadresleri SET serino=%s WHERE ip=%s"
+        data = [d,ip]
+        qt.insertdeletequery(updatesql, data)
+        print("updated")
 
 snmpprotocol = SnmpProtocol()
-snmpprotocol.execute("10.6.208.64")
-#for i in snmpprotocol.iplist:
-#    result = snmpprotocol.execute(i)
+#snmpprotocol.execute("10.6.208.64")
+for i in snmpprotocol.iplist:
+    result = snmpprotocol.execute(i)
 
 
 #insert =  querytrigger()
